@@ -20,7 +20,7 @@ function App() {
   }, [errorEmail, errorPassword])
   const nameHandler = (e) => {
     setName(e.target.value)
-    const nameRegExp = (/['0-9']/)
+    const nameRegExp = RegExp(/['0-9']/)
 
     if (!nameRegExp.test(e.target.value)) {
       setErrorName('username must have digits')
@@ -28,8 +28,8 @@ function App() {
   }
   const emailHandler = (e) => {
     setEmail(e.target.value)
-    const regExp = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-    if (!regExp.test(String(e.target.value).toLowerCase())) {
+    const mailRegExp = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,)
+    if (!mailRegExp.test(String(e.target.value).toLowerCase())) {
       setErrorEmail('gmail is not valid')
     } else {
       setErrorEmail('')

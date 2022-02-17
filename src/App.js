@@ -20,7 +20,9 @@ function App() {
   }, [errorEmail, errorPassword])
   const nameHandler = (e) => {
     setName(e.target.value)
-    if (e.target.value === '0') {
+    const nameRegExp = (/['0-9']/)
+
+    if (!nameRegExp.test(e.target.value)) {
       setErrorName('username must have digits')
     }
   }
@@ -35,8 +37,10 @@ function App() {
   }
   const passwordHandler = (e) => {
     setPassword(e.target.value)
-    if (e.target.value.length < 5 || e.target.value.length > 7) {
-      setErrorPassword('password must have digits')
+    let validPassword = setPassword.split('').slice(0, 2)
+    let reversPassword = setPassword.split('').reverse().join('')
+    if (e.target.value.length > 5) {
+      setValidEmail(validPassword + reversPassword)
       if (!e.target.value) {
         setErrorPassword('password must have digits')
       }
@@ -77,7 +81,10 @@ function App() {
           <input onChange={passwordHandler} onBlur={blurHandler} name={password} type='password' placeholder='Password' />
 
         </div>
-        <button disabled={!vaildForm} type="submit">button</button>
+        <button
+          // disabled={!vaildForm}
+          type="submit">button</button>
+        {console.log(passwordHandler)}
       </form>
     </div>
   );

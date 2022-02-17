@@ -82,9 +82,8 @@ function App() {
 
         </div>
         <button
-          // disabled={!vaildForm}
+          disabled={!vaildForm}
           type="submit">button</button>
-        {console.log(passwordHandler)}
       </form>
     </div>
   );
